@@ -38,11 +38,13 @@
             <div class="quote-content">
                 <p class="lunchbox-text">From leading the boardroom to <span class="highlight">packing a lunchbox</span>...</p>
                 
-                <div class="lunchbox-items">
-                    <span class="lunch-item" style="animation-delay: 0s;">🍱</span>
-                    <span class="lunch-item" style="animation-delay: 1.2s;">🥪</span>
-                    <span class="lunch-item" style="animation-delay: 0.5s;">🧃</span>
-                    <span class="lunch-item" style="animation-delay: 1.8s;">🍎</span>
+                <div class="lunchbox-container">
+                    <span class="lunch-item toy-float-1">🍱</span>
+                    <span class="lunch-item toy-float-2">🥪</span>
+                    <span class="lunch-item toy-float-3">🧃</span>
+                    <span class="lunch-item toy-float-4">🍎</span>
+                    <span class="lunch-item toy-float-5">🍌</span>
+                    <span class="lunch-item toy-float-6">🍪</span>
                 </div>
 
                 <blockquote>
@@ -53,26 +55,29 @@
     </div>
 
     <script>
-        const toys = ['🧸', '🚗', '🚂', '🧩', '🪁', '🎈', '🪀', '🚜', '🥁', '🦄', '🦒', '🎲'];
-        const numToys = 30;
+        const toys = ['🧸', '🚗', '🚂', '🧩', '🪁', '🎈', '🪀', '🚜', '🥁', '🦄', '🦒', '🎲', '🪆', '🎨', '🚀', '⭐', '🧸', '🎈'];
+        const numToys = 45;
 
         for (let i = 0; i < numToys; i++) {
             const toy = document.createElement('div');
             toy.classList.add('toy');
             toy.textContent = toys[Math.floor(Math.random() * toys.length)];
             
-            // Random horizontal position
-            toy.style.left = Math.random() * 100 + 'vw';
+            // Random position anywhere across viewport
+            toy.style.left = Math.random() * 92 + 'vw';
+            toy.style.top = Math.random() * 90 + 'vh';
             
-            // Random animation delay to stagger the toys
-            toy.style.animationDelay = (Math.random() * 10) + 's';
+            // Random animation duration & delay for messy un-synchronized floating
+            const dur1 = 7 + Math.random() * 10;
+            const dur2 = 5 + Math.random() * 7;
+            const delay = -Math.random() * 10;
             
-            // Random size for variety
-            const size = 1.5 + Math.random() * 2;
-            toy.style.fontSize = size + 'rem';
+            toy.style.animationDuration = `${dur1}s, ${dur2}s`;
+            toy.style.animationDelay = `${delay}s, ${delay}s`;
             
-            // Random horizontal drift (using custom properties or inline transforms)
-            // But for simplicity, the CSS animation floatToy handles vertical.
+            // Random size
+            const size = 1.6 + Math.random() * 2.2;
+            toy.style.fontSize = `${size}rem`;
             
             document.body.appendChild(toy);
         }

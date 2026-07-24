@@ -55,7 +55,7 @@
     </div>
 
     <script>
-        const toys = ['🧸', '🚗', '🚂', '🧩', '🪁', '🎈', '🪀', '🚜', '🥁', '🦄', '🦒', '🎲', '🪆', '🎨', '🚀', '⭐', '🧸', '🎈'];
+        const toys = ['🧸', '🦄', '👑', '🎀', '🩰', '💖', '🪆', '🪄', '🏰', '💎', '👛', '🍭', '🌸', '🎈', '⭐'];
         const numToys = 45;
 
         for (let i = 0; i < numToys; i++) {
@@ -63,20 +63,18 @@
             toy.classList.add('toy');
             toy.textContent = toys[Math.floor(Math.random() * toys.length)];
             
-            // Random position anywhere across viewport
-            toy.style.left = Math.random() * 92 + 'vw';
-            toy.style.top = Math.random() * 90 + 'vh';
+            // Random horizontal start position
+            toy.style.left = Math.random() * 95 + 'vw';
             
-            // Random animation duration & delay for messy un-synchronized floating
-            const dur1 = 7 + Math.random() * 10;
-            const dur2 = 5 + Math.random() * 7;
-            const delay = -Math.random() * 10;
+            // Stagger duration & negative delay so toys are scattered across screen instantly
+            const duration = 10 + Math.random() * 14;
+            const delay = -Math.random() * 20;
             
-            toy.style.animationDuration = `${dur1}s, ${dur2}s`;
-            toy.style.animationDelay = `${delay}s, ${delay}s`;
+            toy.style.animationDuration = `${duration}s`;
+            toy.style.animationDelay = `${delay}s`;
             
             // Random size
-            const size = 1.6 + Math.random() * 2.2;
+            const size = 1.8 + Math.random() * 2.2;
             toy.style.fontSize = `${size}rem`;
             
             document.body.appendChild(toy);

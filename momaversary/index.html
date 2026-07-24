@@ -33,6 +33,41 @@
                 <h2>...But still a <span class="highlight">corporate boss lady</span>.</h2>
             </div>
         </section>
+
+        <section class="mother-quote fade-in" style="animation-delay: 0.8s;">
+            <div class="quote-content">
+                <p class="lunchbox-text">From leading the boardroom to <span class="highlight">packing a lunchbox</span>...</p>
+                <blockquote>
+                    Of all the rights of a women, the greatest is to be a mother.
+                </blockquote>
+            </div>
+        </section>
     </div>
+
+    <script>
+        const toys = ['🧸', '🚗', '🚂', '🧩', '🪁', '🎈', '🪀', '🚜', '🥁', '🦄', '🦒', '🎲', '🍱', '🥪', '🧃', '🍎'];
+        const numToys = 30;
+
+        for (let i = 0; i < numToys; i++) {
+            const toy = document.createElement('div');
+            toy.classList.add('toy');
+            toy.textContent = toys[Math.floor(Math.random() * toys.length)];
+            
+            // Random horizontal position
+            toy.style.left = Math.random() * 100 + 'vw';
+            
+            // Random animation delay to stagger the toys
+            toy.style.animationDelay = (Math.random() * 10) + 's';
+            
+            // Random size for variety
+            const size = 1.5 + Math.random() * 2;
+            toy.style.fontSize = size + 'rem';
+            
+            // Random horizontal drift (using custom properties or inline transforms)
+            // But for simplicity, the CSS animation floatToy handles vertical.
+            
+            document.body.appendChild(toy);
+        }
+    </script>
 </body>
 </html>

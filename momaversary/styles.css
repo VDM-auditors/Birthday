@@ -183,6 +183,50 @@ body {
     position: relative;
 }
 
+.mother-quote {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.quote-content {
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+}
+
+.lunchbox-text {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.lunchbox-text .highlight {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-style: italic;
+    color: var(--text-main);
+    line-height: 1.4;
+    position: relative;
+}
+
+blockquote::before, blockquote::after {
+    content: '"';
+    color: var(--accent);
+    opacity: 0.5;
+    font-size: 1.5em;
+    vertical-align: -0.4em;
+    line-height: 0.1;
+    margin: 0 0.1em;
+}
+
 /* Animations */
 .fade-in {
     opacity: 0;
@@ -210,4 +254,26 @@ body {
     .boss-lady-content {
         padding: 2rem;
     }
+}
+
+/* Floating Toys Animation */
+.toy {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.8;
+    animation: floatToy 10s linear infinite, spinToy 8s linear infinite;
+}
+
+@keyframes floatToy {
+    0% { transform: translateY(110vh) scale(0.8); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+@keyframes spinToy {
+    0% { rotate: 0deg; }
+    100% { rotate: 360deg; }
 }

@@ -208,6 +208,24 @@ body {
     font-weight: 600;
 }
 
+.lunchbox-items {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.lunch-item {
+    font-size: 2.5rem;
+    animation: bounce 2s infinite ease-in-out alternate;
+    display: inline-block;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+
 blockquote {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.5rem, 4vw, 2.5rem);

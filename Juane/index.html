@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Juane!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: #fff;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Animation */
+        .symbol-container {
+            position: fixed;
+            bottom: -150px;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .symbol {
+            position: absolute;
+            bottom: -100px;
+            font-size: 30px;
+            animation: floatUp ease-in infinite;
+            opacity: 0.4;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(-15deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .cheers {
+            font-size: 60px;
+            animation: clink 2s ease infinite alternate;
+            margin-bottom: -10px;
+            filter: drop-shadow(0 0 15px rgba(233, 69, 96, 0.6));
+        }
+
+        @keyframes clink {
+            0% { transform: scale(1) translateY(0); }
+            100% { transform: scale(1.1) translateY(-10px); }
+        }
+
+        .photo-frame {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            border: 6px solid #e94560;
+            box-shadow: 0 0 30px rgba(233, 69, 96, 0.5), 0 0 60px rgba(233, 69, 96, 0.3);
+            overflow: hidden;
+            margin: 20px 0;
+            animation: photoGlow 2s ease-in-out infinite alternate;
+            background: #fff;
+            transition: transform 0.4s ease;
+        }
+        
+        .photo-frame:hover {
+            transform: scale(1.08) rotate(5deg);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        @keyframes photoGlow {
+            0% { box-shadow: 0 0 20px rgba(233, 69, 96, 0.4); }
+            100% { box-shadow: 0 0 50px rgba(233, 69, 96, 0.8), 0 0 80px rgba(15, 52, 96, 0.6); }
+        }
+
+        .name-tag {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(233, 69, 96, 0.5);
+            border-radius: 20px;
+            padding: 8px 28px;
+            margin: 10px 0;
+            color: #e94560;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: #fff;
+            text-shadow: 4px 4px 0px #e94560, 6px 6px 15px rgba(0,0,0,0.6);
+            margin: 20px 0 10px;
+            text-align: center;
+            letter-spacing: 3px;
+            animation: titlePop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes titlePop {
+            0% { transform: scale(0) translateY(-50px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #a2a8d3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 650px;
+            width: 90%;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            animation: cardSlide 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes cardSlide {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .message-card p {
+            color: #eaeaea;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .message-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .emoji-row {
+            font-size: 2.2rem;
+            margin: 15px 0;
+            letter-spacing: 15px;
+        }
+
+        .sparkle-text {
+            color: #e94560;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .fun-facts {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 0;
+            max-width: 700px;
+            width: 90%;
+        }
+
+        .fact-bubble {
+            background: rgba(22, 33, 62, 0.7);
+            border: 2px solid #a2a8d3;
+            border-radius: 12px;
+            padding: 20px 25px;
+            color: #fff;
+            font-size: 1rem;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            animation: bubblePop 0.5s ease-out both;
+        }
+
+        .fact-bubble:nth-child(1) { animation-delay: 0.5s; }
+        .fact-bubble:nth-child(2) { animation-delay: 0.7s; }
+        .fact-bubble:nth-child(3) { animation-delay: 0.9s; }
+
+        .fact-bubble:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(233, 69, 96, 0.3);
+            border-color: #e94560;
+        }
+
+        .fact-bubble .fact-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .wish-button {
+            background: linear-gradient(135deg, #e94560, #ff005c);
+            border: none;
+            border-radius: 50px;
+            padding: 18px 45px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: #fff;
+            cursor: pointer;
+            margin: 40px 0;
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.5);
+            transition: all 0.3s;
+            animation: pulse 2s ease-in-out infinite;
+            text-transform: uppercase;
+        }
+
+        .wish-button:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(233, 69, 96, 0.8);
+            background: linear-gradient(135deg, #ff005c, #e94560);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(233, 69, 96, 0.5); }
+            50% { box-shadow: 0 8px 45px rgba(255, 0, 92, 0.7); }
+        }
+
+        .footer-emojis {
+            font-size: 2.5rem;
+            margin: 20px 0 40px;
+            letter-spacing: 15px;
+        }
+
+        /* Firework Styles */
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: fireworkBurst 1s ease-out forwards;
+        }
+
+        @keyframes fireworkBurst {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .photo-frame { width: 180px; height: 180px; }
+            .message-card { padding: 25px; }
+            h1 { font-size: 3.5rem; }
+            .wish-button { font-size: 1.4rem; padding: 15px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="symbol-container" id="symbols"></div>
+
+    <div class="main-content">
+        <div class="cheers">🎉</div>
+
+        <div class="photo-frame">
+            <img src="Screenshot 2026-07-24 100525.png" alt="Juane">
+        </div>
+
+        <div class="name-tag">The Mastermind</div>
+
+        <h1>Happy Birthday!</h1>
+        <h2>Juane</h2>
+
+        <div class="message-card">
+            <p class="emoji-row">♞🐶∑♟🐕</p>
+            <p>
+                Wishing you a perfectly calculated and wonderfully brilliant birthday, Juane!
+                Today is all about celebrating the genius that you are.
+            </p>
+            <p>
+                May your day be filled with checkmates, cute dogs, and infinite joy. 
+                Here's to another fantastic year ahead!
+            </p>
+            <p class="sparkle-text">
+                Have an extraordinary day and enjoy every moment!
+            </p>
+            <p class="emoji-row">♔🐾∞♕🐩</p>
+        </div>
+
+        <div class="fun-facts">
+            <div class="fact-bubble">
+                <span class="fact-icon">∑</span>
+                Math Whiz
+            </div>
+            <div class="fact-bubble">
+                <span class="fact-icon">♞</span>
+                Chess Master
+            </div>
+            <div class="fact-bubble">
+                <span class="fact-icon">🐕</span>
+                Dog Lover
+            </div>
+        </div>
+
+        <button class="wish-button" onclick="launchCelebration()">
+            💥 Launch the Celebration! 💥
+        </button>
+
+        <div class="footer-emojis">♟🐾∞🐶♕</div>
+    </div>
+
+    <script>
+        const symbolContainer = document.getElementById('symbols');
+        const themeEmojis = ['♔', '♕', '♖', '♗', '♘', '♙', '♚', '♛', '♜', '♝', '♞', '♟', '∑', '∫', '∞', 'π', '√', '🐶', '🐕', '🐩', '🐾'];
+        const fireworkColors = ['#e94560', '#ff005c', '#a2a8d3', '#fff', '#16213e', '#0f3460'];
+
+        function createSymbol() {
+            const symbol = document.createElement('div');
+            symbol.className = 'symbol';
+            symbol.innerText = themeEmojis[Math.floor(Math.random() * themeEmojis.length)];
+            symbol.style.left = Math.random() * 100 + '%';
+            symbol.style.animationDuration = (Math.random() * 5 + 6) + 's';
+            symbol.style.animationDelay = Math.random() * 2 + 's';
+            symbol.style.fontSize = (Math.random() * 25 + 20) + 'px';
+            symbolContainer.appendChild(symbol);
+            setTimeout(() => symbol.remove(), 12000);
+        }
+
+        setInterval(createSymbol, 500);
+        
+        for (let i = 0; i < 20; i++) setTimeout(createSymbol, i * 250);
+
+        function launchFirework(x, y) {
+            const container = document.createElement('div');
+            container.className = 'firework';
+            container.style.left = x + 'px';
+            container.style.top = y + 'px';
+            const particleCount = 40;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const p = document.createElement('div');
+                p.className = 'firework-particle';
+                const angle = (i / particleCount) * 360;
+                const distance = Math.random() * 120 + 50;
+                const dx = Math.cos(angle * Math.PI / 180) * distance;
+                const dy = Math.sin(angle * Math.PI / 180) * distance;
+                p.style.backgroundColor = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+                p.style.setProperty('--dx', dx + 'px');
+                p.style.setProperty('--dy', dy + 'px');
+                p.style.animation = 'none';
+                p.animate([
+                    { transform: 'translate(0,0) scale(1)', opacity: 1 },
+                    { transform: `translate(${dx}px,${dy}px) scale(0)`, opacity: 0 }
+                ], { duration: 1000 + Math.random() * 600, easing: 'cubic-bezier(0.25, 1, 0.5, 1)', fill: 'forwards' });
+                container.appendChild(p);
+            }
+            document.body.appendChild(container);
+            setTimeout(() => container.remove(), 1600);
+        }
+
+        function launchCelebration() {
+            // Extra symbols!
+            for (let i = 0; i < 40; i++) setTimeout(createSymbol, i * 40);
+            
+            // Fireworks
+            const positions = [
+                [window.innerWidth * 0.2, window.innerHeight * 0.3],
+                [window.innerWidth * 0.5, window.innerHeight * 0.2],
+                [window.innerWidth * 0.8, window.innerHeight * 0.3],
+                [window.innerWidth * 0.3, window.innerHeight * 0.5],
+                [window.innerWidth * 0.7, window.innerHeight * 0.5],
+                [window.innerWidth * 0.5, window.innerHeight * 0.6],
+                [window.innerWidth * 0.1, window.innerHeight * 0.1],
+                [window.innerWidth * 0.9, window.innerHeight * 0.1],
+                [window.innerWidth * 0.4, window.innerHeight * 0.8],
+                [window.innerWidth * 0.6, window.innerHeight * 0.8],
+            ];
+            
+            positions.forEach(([x, y], i) => {
+                setTimeout(() => launchFirework(x, y), i * 150 + Math.random() * 300);
+            });
+        }
+    </script>
+</body>
+</html>

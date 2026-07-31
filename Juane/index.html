@@ -4,6 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Juane!</title>
+    <!-- Birthday Date Gate Script -->
+    <script>
+        (function() {
+            const targetMonth = 7; // July
+            const targetDay = 24;  // 24th
+            const personName = "Juane van Zyl";
+            const birthdayLabel = "July 24th";
+
+            const now = new Date();
+            const currentMonth = now.getMonth() + 1;
+            const currentDay = now.getDate();
+            const urlParams = new URLSearchParams(window.location.search);
+            const isPreview = urlParams.get('preview') === 'true';
+
+            const isTodayBirthday = (currentMonth === targetMonth && currentDay === targetDay);
+
+            if (!isTodayBirthday && !isPreview) {
+                document.addEventListener('DOMContentLoaded', showPoster);
+            }
+
+            function showPoster() {
+                document.body.style.overflow = 'hidden';
+                const poster = document.createElement('div');
+                poster.id = 'not-birthday-poster';
+                poster.innerHTML = `
+                    <div class="poster-card">
+                        <div class="poster-badge">🔒 Birthday Locked</div>
+                        <div class="poster-icon">🧮</div>
+                        <h1>It's Not Your Birthday Today!</h1>
+                        <p class="poster-message">
+                            Sorry! This special page is reserved for <strong>${personName}</strong> on their birthday (<strong>${birthdayLabel}</strong>).
+                        </p>
+                        <p class="poster-date-info">Today is ${now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}.</p>
+                        <div class="poster-actions">
+                            <a href="../index.html" class="poster-btn primary-btn">← Back to Birthday Lobby</a>
+                            <button id="preview-btn" class="poster-btn secondary-btn">✨ Preview Page Anyway</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(poster);
+                document.getElementById('preview-btn').addEventListener('click', function() {
+                    poster.remove();
+                    document.body.style.overflow = '';
+                });
+            }
+        })();
+    </script>
+    <style id="poster-styles">
+        #not-birthday-poster {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at center, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            z-index: 999999; display: flex; align-items: center; justify-content: center;
+            padding: 20px; font-family: 'Poppins', sans-serif; color: #fff;
+        }
+        #not-birthday-poster .poster-card {
+            background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(15, 52, 96, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(15, 52, 96, 0.3);
+            border-radius: 28px; padding: 44px 32px; max-width: 480px; width: 100%; text-align: center;
+            animation: posterPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes posterPop { 0% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        #not-birthday-poster .poster-badge {
+            display: inline-block; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5; font-size: 0.8rem; font-weight: 600; padding: 6px 16px; border-radius: 20px;
+            margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        #not-birthday-poster .poster-icon { font-size: 4rem; margin-bottom: 16px; animation: floatBalloon 3s ease-in-out infinite; }
+        @keyframes floatBalloon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        #not-birthday-poster h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 14px; color: #fff; }
+        #not-birthday-poster .poster-message { font-size: 1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 10px; }
+        #not-birthday-poster .poster-message strong { color: #4eacc5; }
+        #not-birthday-poster .poster-date-info { font-size: 0.85rem; color: #64748b; margin-bottom: 28px; }
+        #not-birthday-poster .poster-actions { display: flex; flex-direction: column; gap: 12px; }
+        #not-birthday-poster .poster-btn {
+            display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px;
+            border-radius: 14px; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: all 0.25s ease; border: none;
+        }
+        #not-birthday-poster .primary-btn { background: linear-gradient(135deg, #0f3460, #4eacc5); color: #fff; box-shadow: 0 4px 15px rgba(15, 52, 96, 0.4); }
+        #not-birthday-poster .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(15, 52, 96, 0.6); }
+        #not-birthday-poster .secondary-btn { background: rgba(255, 255, 255, 0.08); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.15); }
+        #not-birthday-poster .secondary-btn:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+    </style>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700&display=swap');
 

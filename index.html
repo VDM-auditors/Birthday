@@ -15,24 +15,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #ff6b9d, #6b8cff);
+            background: linear-gradient(135deg, #0f172a, #1e1b4b, #311042);
             padding: 40px 20px;
         }
 
         .lobby {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 48px 40px;
-            max-width: 480px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            padding: 48px 36px;
+            max-width: 520px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
         }
 
         h1 {
             font-family: 'Pacifico', cursive;
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #ff6b9d, #6b8cff);
+            font-size: 2.6rem;
+            background: linear-gradient(135deg, #ff6b9d, #8b5cf6, #3b82f6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -40,51 +40,135 @@
         }
 
         p.subtitle {
-            color: #555;
-            margin-bottom: 32px;
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 28px;
         }
 
         .cards {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .card {
-            display: block;
-            padding: 18px 24px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #ff6b9d, #ff9a6b);
-            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-radius: 16px;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            color: #1e293b;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-size: 1.05rem;
+            transition: all 0.25s ease;
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 24px rgba(255, 107, 157, 0.4);
+            transform: translateY(-2px);
+            border-color: #8b5cf6;
+            box-shadow: 0 10px 24px rgba(139, 92, 246, 0.15);
         }
 
-        .card:nth-child(2) {
-            background: linear-gradient(135deg, #6b8cff, #6bd4ff);
+        .card.active-today {
+            background: linear-gradient(135deg, #e69d35, #2e6f54);
+            border-color: #f4c463;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(46, 111, 84, 0.3);
         }
 
-        .card:nth-child(2):hover {
-            box-shadow: 0 10px 24px rgba(107, 140, 255, 0.4);
+        .card.active-today:hover {
+            box-shadow: 0 12px 28px rgba(46, 111, 84, 0.45);
+        }
+
+        .card-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.live {
+            background: #22c55e;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .status-badge.locked {
+            background: #e2e8f0;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
     <div class="lobby">
         <h1>🎉 Birthday Lobby</h1>
-        <p class="subtitle">Pick a name to open their birthday page</p>
+        <p class="subtitle">Celebrations are live only on the birthday date!</p>
         <div class="cards">
-            <a class="card" href="Hennie/">Hennie van der Merwe</a>
-            <a class="card" href="Hermien/">Hermien van der Sandt</a>
-            <a class="card" style="background: linear-gradient(135deg, #e69d35, #2e6f54);" href="Jessica/">Jessica de Lange 🐴</a>
+            <a class="card" data-month="7" data-day="31" href="Jessica/">
+                <span class="card-name">Jessica de Lange 🐴</span>
+                <span class="status-badge">Checking...</span>
+            </a>
+            <a class="card" data-month="10" data-day="15" href="Hennie/">
+                <span class="card-name">Hennie van der Merwe</span>
+                <span class="status-badge">Checking...</span>
+            </a>
+            <a class="card" data-month="7" data-day="2" href="Hermien/">
+                <span class="card-name">Hermien van der Sandt</span>
+                <span class="status-badge">Checking...</span>
+            </a>
+            <a class="card" data-month="7" data-day="24" href="Juane/">
+                <span class="card-name">Juane van Zyl 🧮</span>
+                <span class="status-badge">Checking...</span>
+            </a>
+            <a class="card" data-month="7" data-day="24" href="Shani/">
+                <span class="card-name">Shani 🦄</span>
+                <span class="status-badge">Checking...</span>
+            </a>
+            <a class="card" data-month="7" data-day="24" href="momaversary/">
+                <span class="card-name">Reinette (Momaversary) 💖</span>
+                <span class="status-badge">Checking...</span>
+            </a>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const currentMonth = today.getMonth() + 1;
+            const currentDay = today.getDate();
+
+            document.querySelectorAll('.card[data-month][data-day]').forEach(card => {
+                const m = parseInt(card.dataset.month, 10);
+                const d = parseInt(card.dataset.day, 10);
+                const badge = card.querySelector('.status-badge');
+                
+                if (m === currentMonth && d === currentDay) {
+                    card.classList.add('active-today');
+                    badge.className = 'status-badge live';
+                    badge.innerHTML = '🎉 LIVE TODAY!';
+                } else {
+                    badge.className = 'status-badge locked';
+                    badge.innerHTML = '🔒 Locked';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
